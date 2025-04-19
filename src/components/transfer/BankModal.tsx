@@ -1,5 +1,5 @@
 import React from 'react';
-import closeLg from '../../assets/icons/close-lg.svg';
+import closeLg from '../../assets/icons/closeIcon.svg';
 import Button from '../common/Button';
 
 interface ModalProps {
