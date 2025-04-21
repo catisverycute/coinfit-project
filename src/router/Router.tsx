@@ -8,6 +8,7 @@ import { useLocation } from 'react-router-dom';
 import SelectAccountPage from '../pages/transfer/SelectAccountPage';
 import EnterAccountInfoPage from '../pages/transfer/EnterAccountInfoPage';
 import AnalysisPage from '../pages/analysis/AnalysisPage';
+import AmountEnterPage from '../pages/transfer/AmountEnterPage';
 // import Header from '../components/common/Header';
 
 const Router = () => {
@@ -26,6 +27,7 @@ const Router = () => {
         <Route path="/analysis" element={<AnalysisPage />} />
         <Route path="/transfer/step1" element={<SelectAccountPage />} />
         <Route path="/transfer/step2" element={<EnterAccountInfoPage />} />
+        <Route path="/transfer/step3" element={<AmountEnterPage />} />
       </Routes>
       {!shouldHideBottomNav && <BottomNav />}
     </>
