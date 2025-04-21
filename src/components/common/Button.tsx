@@ -3,12 +3,14 @@ import cx from 'clsx';
 
 type IColor = keyof typeof colors;
 type ITextColor = keyof typeof textColors;
+type IVariant = keyof typeof variants;
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   type?: 'button' | 'submit' | 'reset';
   children: ReactNode;
   color?: IColor;
   textColor?: ITextColor;
+  variant?: IVariant;
 }
 
 const colors = {
@@ -28,12 +30,19 @@ const textColors = {
   black: 'text-black',
 };
 
+const variants = {
+  keypad: 'bg-white px-2 py-10 text-4xl lg:py-5 lg:text-2xl ',
+  primaryBtn: 'bg-[#87A9FF] px-4 py-2 rounded-lg  text-base',
+  back: 'p-0 btn-ghost bg-transparent border-none  hover:shadow-none',
+};
+
 const Button: React.FC<ButtonProps> = ({
   type = 'button',
   color = 'primary',
   children,
   textColor = 'black',
-  className = '',
+  className,
+  variant,
   ...props
 }) => {
   return (
@@ -41,8 +50,9 @@ const Button: React.FC<ButtonProps> = ({
       type={type}
       {...props}
       className={cx(
-        'btn px-4 py-2 rounded-lg text-base',
-        colors[color],
+        'btn',
+        variant && variants[variant],
+        !variant && colors[color],
         textColors[textColor],
         className
       )}
