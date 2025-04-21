@@ -1,7 +1,7 @@
 import React from 'react';
-import SpendingCard from '../components/home/SpendingCard';
-import RecentPayCard from '../components/home/RecentPayCard';
-import MonthlyGraphCard from '../components/home/MonthlyGraphCard';
+import MonthlyGraphCard from '../components/Home/MonthlyGraphCard';
+import SpendingCard from '../components/Home/SpendingCard';
+import RecentPayCard from '../components/Home/RecentPayCard';
 
 const MainPage: React.FC = () => {
   return (
