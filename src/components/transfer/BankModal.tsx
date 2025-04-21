@@ -8,7 +8,7 @@ interface ModalProps {
 
 const BankModal: React.FC<ModalProps> = ({ onClose }) => {
   return (
-    <div className="border rounded-t-lg bg-white w-full fixed bottom-0 z-50">
+    <div className="border rounded-t-lg bg-white w-full fixed bottom-0 left-0 z-50">
       <div className="pt-10 pb-10 pr-4 pl-4">
         <div className="flex justify-between *:mb-6 text-3xl">
           은행
