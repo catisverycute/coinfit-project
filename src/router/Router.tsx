@@ -9,11 +9,18 @@ import SelectAccountPage from '../pages/transfer/SelectAccountPage';
 import EnterAccountInfoPage from '../pages/transfer/EnterAccountInfoPage';
 import AnalysisPage from '../pages/analysis/AnalysisPage';
 import AmountEnterPage from '../pages/transfer/AmountEnterPage';
+import TransferConfirmPage from '../pages/transfer/TransferConfirmPage';
+import ResetPasswordPage from '../pages/auth/RestPasswordPage';
 // import Header from '../components/common/Header';
 
 const Router = () => {
   const location = useLocation();
-  const hideBottomNavRoutes = ['/login', '/signup', '/transfer/step1'];
+  const hideBottomNavRoutes = [
+    '/login',
+    '/signup',
+    '/reset-password',
+    '/transfer/step1',
+  ];
   const shouldHideBottomNav = hideBottomNavRoutes.includes(location.pathname);
 
   return (
@@ -22,12 +29,14 @@ const Router = () => {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/reset-password" element={<ResetPasswordPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/account" element={<AccountListPage />} />
         <Route path="/analysis" element={<AnalysisPage />} />
         <Route path="/transfer/step1" element={<SelectAccountPage />} />
         <Route path="/transfer/step2" element={<EnterAccountInfoPage />} />
         <Route path="/transfer/step3" element={<AmountEnterPage />} />
+        <Route path="/transfer/step4" element={<TransferConfirmPage />} />
       </Routes>
       {!shouldHideBottomNav && <BottomNav />}
     </>
