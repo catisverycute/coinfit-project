@@ -16,16 +16,18 @@ const AmountEnterPage = () => {
   };
 
   const handleSubmit = () => {
-    navigate('/transfer/step2');
+    navigate('/transfer/step4');
   };
 
   return (
     <div>
       <BackButton />
       EnterAmount
-      <span className="text-xl">님에게</span>
-      <span className="text-2xl">얼마를 보낼까요?</span>
-      <span className="text-xl">{amount.length === 0 ? '0' : amount}원</span>
+      <div className="flex flex-col text-center">
+        <div className="text-xl py-2">님에게</div>
+        <div className="text-3xl py-2"> 얼마를 보낼까요?</div>
+        <div className="text-4xl">{amount.length === 0 ? '0' : amount}원</div>
+      </div>
       <AmountKeyPad
         onInput={handleClick}
         onDelete={handleDelete}
