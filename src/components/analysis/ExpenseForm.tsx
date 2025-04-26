@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useAddExpense } from '../../hooks/useAddExpense';
+import { useAddExpense } from '../../hooks/expense/useAddExpense';
 
 interface ExpenseFormProps {
   onSaved?: () => void;
