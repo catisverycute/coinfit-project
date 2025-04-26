@@ -4,9 +4,12 @@ import Button from '../common/Button';
 
 interface ModalProps {
   onClose: () => void;
+  onSelect: (bank: string) => void;
 }
 
-const BankModal: React.FC<ModalProps> = ({ onClose }) => {
+const banks = ['우리', '신한', '농협', '신협', '카카오'];
+
+const BankModal: React.FC<ModalProps> = ({ onClose, onSelect }) => {
   return (
     <div className="border rounded-t-lg bg-white w-full fixed bottom-0 left-0 z-50">
       <div className="pt-10 pb-10 pr-4 pl-4">
@@ -16,13 +19,16 @@ const BankModal: React.FC<ModalProps> = ({ onClose }) => {
             <img className="w-8" src={closeLg} />
           </Button>
         </div>
-        <div className="grid grid-cols-4 ml-2 my-8 text-lg">
-          <button className="p-2 border rounded-2xl">100만원</button>
-          <button className="p-2 border rounded-2xl">50만원</button>
-          <button className="p-2 border rounded-2xl">30만원</button>
-          <button className="p-2 border rounded-2xl">20만원</button>
-          <button className="p-2 border rounded-2xl">10만원</button>
-          <button className="p-2 border rounded-2xl">직접 입력</button>
+        <div className="grid grid-cols-3 ml-2 my-8 text-lg gap-3">
+          {banks.map((bank) => (
+            <button
+              key={bank}
+              className="p-6 w-28 border rounded-2xl"
+              onClick={() => onSelect(bank)}
+            >
+              {bank}
+            </button>
+          ))}
         </div>
       </div>
     </div>
