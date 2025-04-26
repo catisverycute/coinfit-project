@@ -25,7 +25,7 @@ const PieChart: React.FC<CustomPieChartProps> = ({
   colors = defaultColors,
 }) => {
   return (
-    <div className="w-full h-[300px]">
+    <div className="w-full h-[260px]">
       <ResponsiveContainer>
         <RechartsPieChart>
           <Pie
@@ -33,7 +33,7 @@ const PieChart: React.FC<CustomPieChartProps> = ({
             cx="50%"
             cy="50%"
             labelLine={false}
-            outerRadius={100}
+            outerRadius={90}
             fill="#8884d8"
             dataKey="value"
             label={({ name, percent }) =>
