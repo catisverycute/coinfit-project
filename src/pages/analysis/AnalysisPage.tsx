@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PieChart, { PieChartData } from '../../components/analysis/PieChart';
 import CategorySummaryList from '../../components/analysis/CategorySummaryList';
 import { useExpenses } from '../../hooks/expense/useExpense';
-import ExpenseButton from './ExpensePage';
+import ExpenseButton from './ExpenseButton';
 
 const defaultColors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#AF19FF'];
 
