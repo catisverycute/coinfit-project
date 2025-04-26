@@ -7,7 +7,7 @@ const Header: React.FC = () => {
     <Link to="/">
       <div className="flex text-2xl text-center m-3 p-2">
         <img className="w-8 mr-2" src={logo} alt="logo" />
-        <p>CoinFit</p>
+        <p>MoneyFit</p>
       </div>
     </Link>
   );
