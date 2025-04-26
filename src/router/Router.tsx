@@ -16,7 +16,7 @@ import MenuPage from '../pages/menu/MenuPage';
 import RemitSuccessPage from '../pages/transfer/RemitSuccessPage';
 import BudgetSettingPage from '../pages/setting/BudgetSettingPage';
 import ExpenseButton from '../pages/analysis/ExpenseButton';
-// import Header from '../components/common/Header';
+import Header from '../components/common/Header';
 
 const Router = () => {
   const location = useLocation();
@@ -31,7 +31,7 @@ const Router = () => {
 
   return (
     <>
-      {/* <Header /> */}
+      <Header />
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/reset-password" element={<ResetPasswordPage />} />
