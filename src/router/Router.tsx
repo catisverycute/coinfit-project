@@ -14,8 +14,8 @@ import ResetPasswordPage from '../pages/auth/RestPasswordPage';
 import PrivateRoute from '../components/common/PrivateRoute';
 import MenuPage from '../pages/menu/MenuPage';
 import RemitSuccessPage from '../pages/transfer/RemitSuccessPage';
-import ExpensePage from '../pages/analysis/ExpensePage';
 import BudgetSettingPage from '../pages/setting/BudgetSettingPage';
+import ExpenseButton from '../pages/analysis/ExpenseButton';
 // import Header from '../components/common/Header';
 
 const Router = () => {
@@ -104,7 +104,7 @@ const Router = () => {
           path="/expense"
           element={
             <PrivateRoute>
-              <ExpensePage />
+              <ExpenseButton />
             </PrivateRoute>
           }
         />
