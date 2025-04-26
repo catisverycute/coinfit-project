@@ -11,7 +11,7 @@ const SpendingProgress: React.FC<SpendingProgressProps> = ({
 }) => {
   const percentage = Math.min((current / goal) * 100, 100);
 
-  return (
+  return (  
     <div className="w-full max-w-lg">
       <div className="flex items-center mb-2">
         <span className="text-xl font-semibold">이번 달 지출 목표</span>
