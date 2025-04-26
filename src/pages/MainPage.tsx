@@ -1,14 +1,39 @@
-import React from 'react';
-import MonthlyGraphCard from '../components/Home/MonthlyGraphCard';
-import SpendingCard from '../components/Home/SpendingCard';
-import RecentPayCard from '../components/Home/RecentPayCard';
+import React, { useEffect } from 'react';
+import MonthlyGraphCard from '../components/home/MonthlyGraphCard';
+import SpendingCard from '../components/home/SpendingCard';
+import RecentPayCard from '../components/home/RecentPayCard';
+import { useRecentPays } from '../hooks/useRecentPays';
+import { usePay } from '../hooks/usePay';
+import { getDoc, doc } from 'firebase/firestore';
+import { auth, db } from '../firebase';
 
 const MainPage: React.FC = () => {
+  const { pays, total, loading } = useRecentPays(5);
+  const { addPay } = usePay();
+
+  useEffect(() => {
+    const createPayIfNotExist = async () => {
+      const user = auth.currentUser;
+      if (!user) return;
+      const payDoc = await getDoc(
+        doc(db, `users/${user.uid}/accounts/moneyfitpay`)
+      );
+      if (!payDoc.exists()) {
+        await addPay();
+      }
+    };
+    createPayIfNotExist();
+  }, []);
+
   return (
     <div>
       <MonthlyGraphCard />
       <SpendingCard />
-      <RecentPayCard />
+      {loading ? (
+        <div>최근 소비 불러오는 중...</div>
+      ) : (
+        <RecentPayCard pays={pays} total={total} />
+      )}
     </div>
   );
 };
