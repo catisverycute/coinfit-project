@@ -3,6 +3,7 @@ import Button from '../../components/common/Button';
 import { useNavigate } from 'react-router-dom';
 import InputForm from '../../components/common/InputForm';
 import { useSignup } from '../../hooks/useAuth';
+import { usePay } from '../../hooks/usePay';
 
 const SignupPage: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -12,6 +13,7 @@ const SignupPage: React.FC = () => {
   const navigate = useNavigate();
 
   const { signup, loading, error } = useSignup();
+  const { addPay } = usePay();
 
   const handleSignup = async () => {
     if (!email || !password || !name) {
@@ -24,6 +26,7 @@ const SignupPage: React.FC = () => {
     }
     const user = await signup(name, email, password);
     if (user) {
+      await addPay();
       alert('회원가입 성공! 이제 로그인 해주세요.');
       navigate('/login');
     }
