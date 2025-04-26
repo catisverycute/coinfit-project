@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../../firebase';
 
 interface AccountOwnerResult {
@@ -52,11 +52,32 @@ export const useFindAccount = () => {
   return { owner, loading, error, findAccount };
 };
 
-export const usefindMainAccount = () => {
-  const findMainAccount = async () => {
-    const m = await getDocs(collection(db, 'accounts'));
-    console.log(m, 'main account');
+export const useFindMainAccount = () => {
+  const [mainAccount, setMainAccount] = useState<any | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const findMainAccount = async (userId: string) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const q = query(
+        collection(db, `users/${userId}/accounts`),
+        where('isMain', '==', true)
+      );
+      const snap = await getDocs(q);
+      if (snap.empty) {
+        setMainAccount(null);
+        setError('메인 계좌가 없습니다.');
+      } else {
+        setMainAccount({ id: snap.docs[0].id, ...snap.docs[0].data() });
+      }
+      setLoading(false);
+    } catch (err: any) {
+      setError('메인 계좌 검색 중 오류가 발생했습니다.');
+      setLoading(false);
+    }
   };
 
-  return { findMainAccount };
+  return { mainAccount, loading, error, findMainAccount };
 };
