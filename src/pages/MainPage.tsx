@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import MonthlyGraphCard from '../components/home/MonthlyGraphCard';
-import SpendingCard from '../components/home/SpendingCard';
 import RecentPayCard from '../components/home/RecentPayCard';
+import MainAccountCard from '../components/home/MainAccountCard';
 import { useRecentPays } from '../hooks/useRecentPays';
 import { usePay } from '../hooks/usePay';
 import { getDoc, doc } from 'firebase/firestore';
@@ -28,7 +28,7 @@ const MainPage: React.FC = () => {
   return (
     <div>
       <MonthlyGraphCard />
-      <SpendingCard />
+      <MainAccountCard />
       {loading ? (
         <div>최근 소비 불러오는 중...</div>
       ) : (
