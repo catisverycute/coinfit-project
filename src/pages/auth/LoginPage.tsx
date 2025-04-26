@@ -9,6 +9,7 @@ const LoginPage: React.FC = () => {
   const [password, setPassword] = useState('');
   const [msg, setMsg] = useState('');
   const navigate = useNavigate();
+
   const handleEmailLogin = async () => {
     setMsg('');
     if (!email || !password) {
