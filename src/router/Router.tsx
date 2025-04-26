@@ -11,6 +11,11 @@ import AnalysisPage from '../pages/analysis/AnalysisPage';
 import AmountEnterPage from '../pages/transfer/AmountEnterPage';
 import TransferConfirmPage from '../pages/transfer/TransferConfirmPage';
 import ResetPasswordPage from '../pages/auth/RestPasswordPage';
+import PrivateRoute from '../components/common/PrivateRoute';
+import MenuPage from '../pages/menu/MenuPage';
+import RemitSuccessPage from '../pages/transfer/RemitSuccessPage';
+import ExpensePage from '../pages/analysis/ExpensePage';
+import BudgetSettingPage from '../pages/setting/BudgetSettingPage';
 // import Header from '../components/common/Header';
 
 const Router = () => {
@@ -20,6 +25,7 @@ const Router = () => {
     '/signup',
     '/reset-password',
     '/transfer/step1',
+    '/expense',
   ];
   const shouldHideBottomNav = hideBottomNavRoutes.includes(location.pathname);
 
@@ -27,16 +33,97 @@ const Router = () => {
     <>
       {/* <Header /> */}
       <Routes>
-        <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/reset-password" element={<ResetPasswordPage />} />
         <Route path="/signup" element={<SignupPage />} />
-        <Route path="/account" element={<AccountListPage />} />
-        <Route path="/analysis" element={<AnalysisPage />} />
-        <Route path="/transfer/step1" element={<SelectAccountPage />} />
-        <Route path="/transfer/step2" element={<EnterAccountInfoPage />} />
-        <Route path="/transfer/step3" element={<AmountEnterPage />} />
-        <Route path="/transfer/step4" element={<TransferConfirmPage />} />
+        <Route
+          path="/"
+          element={
+            <PrivateRoute>
+              <MainPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/account"
+          element={
+            <PrivateRoute>
+              <AccountListPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/analysis"
+          element={
+            <PrivateRoute>
+              <AnalysisPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/transfer/step1"
+          element={
+            <PrivateRoute>
+              <SelectAccountPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/transfer/step2"
+          element={
+            <PrivateRoute>
+              <EnterAccountInfoPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/transfer/step3"
+          element={
+            <PrivateRoute>
+              <AmountEnterPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/transfer/step4"
+          element={
+            <PrivateRoute>
+              <TransferConfirmPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/transfer/success"
+          element={
+            <PrivateRoute>
+              <RemitSuccessPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/expense"
+          element={
+            <PrivateRoute>
+              <ExpensePage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/setting"
+          element={
+            <PrivateRoute>
+              <BudgetSettingPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/menu"
+          element={
+            <PrivateRoute>
+              <MenuPage />
+            </PrivateRoute>
+          }
+        />
       </Routes>
       {!shouldHideBottomNav && <BottomNav />}
     </>
