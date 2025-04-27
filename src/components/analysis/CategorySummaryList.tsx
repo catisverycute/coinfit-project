@@ -12,7 +12,7 @@ interface Props {
 }
 const CategorySummaryList: React.FC<Props> = ({ items, currency = '₩' }) => (
   <div className="mt-2">
-    {items.map((item, i) => (
+    {items.map((item, _i) => (
       <div key={item.name} className="flex justify-between items-center py-1">
         <div className="flex items-center gap-2">
           <span
