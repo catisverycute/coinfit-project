@@ -6,9 +6,10 @@ import { useRecentPays } from '../hooks/useRecentPays';
 import { usePay } from '../hooks/usePay';
 import { getDoc, doc } from 'firebase/firestore';
 import { auth, db } from '../firebase';
+import MoneyFitPay from '../components/transfer/MoneyFitPay';
 
 const MainPage: React.FC = () => {
-  const { pays, total, loading } = useRecentPays(5);
+  const { pays, total, loading } = useRecentPays();
   const { addPay } = usePay();
 
   useEffect(() => {
@@ -28,6 +29,9 @@ const MainPage: React.FC = () => {
   return (
     <div>
       <MonthlyGraphCard />
+      <div className="mx-6">
+        <MoneyFitPay />
+      </div>
       <MainAccountCard />
       {loading ? (
         <div>최근 소비 불러오는 중...</div>
