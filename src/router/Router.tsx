@@ -17,6 +17,7 @@ import RemitSuccessPage from '../pages/transfer/RemitSuccessPage';
 import BudgetSettingPage from '../pages/setting/BudgetSettingPage';
 import ExpenseButton from '../pages/analysis/ExpenseButton';
 import Header from '../components/common/Header';
+import ChargePage from '../pages/transfer/ChargePage';
 
 const Router = () => {
   const location = useLocation();
@@ -61,7 +62,7 @@ const Router = () => {
           }
         />
         <Route
-          path="/transfer/step1"
+          path="account/transfer/step1"
           element={
             <PrivateRoute>
               <SelectAccountPage />
@@ -69,7 +70,7 @@ const Router = () => {
           }
         />
         <Route
-          path="/transfer/step2"
+          path="account/transfer/step2"
           element={
             <PrivateRoute>
               <EnterAccountInfoPage />
@@ -77,7 +78,7 @@ const Router = () => {
           }
         />
         <Route
-          path="/transfer/step3"
+          path="account/transfer/step3"
           element={
             <PrivateRoute>
               <AmountEnterPage />
@@ -85,7 +86,7 @@ const Router = () => {
           }
         />
         <Route
-          path="/transfer/step4"
+          path="account/transfer/step4"
           element={
             <PrivateRoute>
               <TransferConfirmPage />
@@ -93,7 +94,7 @@ const Router = () => {
           }
         />
         <Route
-          path="/transfer/success"
+          path="account/transfer/success"
           element={
             <PrivateRoute>
               <RemitSuccessPage />
@@ -105,6 +106,14 @@ const Router = () => {
           element={
             <PrivateRoute>
               <ExpenseButton />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="account/charge"
+          element={
+            <PrivateRoute>
+              <ChargePage />
             </PrivateRoute>
           }
         />
