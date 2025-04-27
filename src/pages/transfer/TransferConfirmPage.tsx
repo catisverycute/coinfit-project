@@ -32,7 +32,7 @@ const TransferConfirmPage: React.FC = () => {
       memo,
     });
     if (success) {
-      navigate('/transfer/success', { state: { amount, ownerName } });
+      navigate('/account/transfer/success', { state: { amount, ownerName } });
     }
   };
 
