@@ -88,7 +88,7 @@ const AccountListPage: React.FC = () => {
                   삭제
                 </button>
                 <Link
-                  to="/transfer/step1"
+                  to="/account/transfer/step1"
                   state={{
                     fromAccountId: acc.id,
                     fromAccountBank: acc.bank,
