@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
-import MonthlyGraphCard from '../components/home/MonthlyGraphCard';
-import RecentPayCard from '../components/home/RecentPayCard';
-import MainAccountCard from '../components/home/MainAccountCard';
+
 import { useRecentPays } from '../hooks/useRecentPays';
 import { usePay } from '../hooks/usePay';
 import { getDoc, doc } from 'firebase/firestore';
 import { auth, db } from '../firebase';
 import MoneyFitPay from '../components/transfer/MoneyFitPay';
+import MonthlyGraphCard from '../components/home/MonthlyGraphCard';
+import MainAccountCard from '../components/home/MainAccountCard';
+import RecentPayCard from '../components/home/RecentPayCard';
 
 const MainPage: React.FC = () => {
   const { pays, total, loading } = useRecentPays();
