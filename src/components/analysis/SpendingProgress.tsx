@@ -11,11 +11,10 @@ const SpendingProgress: React.FC<SpendingProgressProps> = ({
 }) => {
   const percentage = Math.min((current / goal) * 100, 100);
 
-  return (  
+  return (
     <div className="w-full max-w-lg">
-      <div className="flex items-center mb-2">
+      <div className="flex items-center justify-between mb-2">
         <span className="text-xl font-semibold">이번 달 지출 목표</span>
-        <span>D-8</span>
       </div>
       <div className="text-md font-medium mb-1">
         {current.toLocaleString()}원 / {goal.toLocaleString()}원
