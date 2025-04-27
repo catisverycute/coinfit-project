@@ -26,8 +26,8 @@ const MoneyFitPay: React.FC = () => {
   }, []);
 
   return (
-    <div className="flex justify-center">
-      <div className="flex items-center px-6 py-8 bg-[#FCF2CD] border my-5 rounded-lg w-xl">
+    <div className="flex justify-center ">
+      <div className="flex items-center lg:w-full px-6 py-8 bg-[#FCF2CD] border my-5 rounded-lg w-xl">
         <div className="font-bold mr-3">MF pay</div>
         <div className="mr-3">
           {loading
@@ -41,7 +41,7 @@ const MoneyFitPay: React.FC = () => {
         >
           충전
         </Button>
-        <Link to="/transfer/step1">
+        <Link to="/pay/transfer/step1">
           <Button type="button" className="px-4 py-2 whitespace-nowrap">
             송금
           </Button>
