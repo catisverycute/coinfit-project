@@ -3,6 +3,7 @@ import { auth, db } from '../firebase';
 import { collection, query, orderBy, limit, getDocs } from 'firebase/firestore';
 
 interface TransferAccount {
+  fromAccount: string;
   toAccount: string;
   toName: string;
   bank: string;
@@ -36,6 +37,7 @@ export const useTransferAccount = (limitCount = 10) => {
         if (tx.toAccount && !seen.has(tx.toAccount)) {
           seen.add(tx.toAccount);
           recents.push({
+            fromAccount: tx.fromAccount || '',
             toAccount: tx.toAccount,
             toName: tx.toName || '',
             bank: tx.bank || '',

@@ -12,7 +12,7 @@ interface RecentPayCardProps {
 }
 
 const RecentPayCard: React.FC<RecentPayCardProps> = ({ pays, total }) => (
-  <div className="border rounded-lg p-4 flex flex-col gap-2">
+  <div className="border rounded-lg p-4 flex flex-col gap-2 mx-6">
     <div className="font-bold mb-2">
       최근 소비 <span className="float-right">{total.toLocaleString()}원</span>
     </div>

@@ -69,8 +69,9 @@ const AccountListPage: React.FC = () => {
                 {acc.bank} {acc.accountNumber}
               </div>
               <div className="text-gray-500">
-                잔액: {acc.balance?.toLocaleString() ?? 0}원
+                잔액: {(Number(acc.balance) || 0).toLocaleString()}원
               </div>
+
               <div className="flex gap-2 mt-1">
                 <button
                   className="px-3 py-1 border rounded text-sm"
@@ -88,7 +89,7 @@ const AccountListPage: React.FC = () => {
                   삭제
                 </button>
                 <Link
-                  to="/transfer/step1"
+                  to="/account/transfer/step1"
                   state={{
                     fromAccountId: acc.id,
                     fromAccountBank: acc.bank,
@@ -102,7 +103,7 @@ const AccountListPage: React.FC = () => {
               </div>
             </li>
           ))}
-      </ul>
+      </ul> 
       <AccountAddEditModal
         open={showModal}
         onClose={() => setShowModal(false)}

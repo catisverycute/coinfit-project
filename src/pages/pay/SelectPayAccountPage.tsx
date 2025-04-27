@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import BackButton from '../../components/common/BackButton';
 import { useTransferAccount } from '../../hooks/useTransferAccount';
 
-const SelectAccountPage: React.FC = () => {
+const SelectPayAccountPage: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const prevState = location.state || {};
@@ -48,5 +48,5 @@ const SelectAccountPage: React.FC = () => {
   );
 };
 
-export default SelectAccountPage;
+export default SelectPayAccountPage;
 ``;

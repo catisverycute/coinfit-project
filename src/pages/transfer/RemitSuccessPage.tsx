@@ -26,7 +26,7 @@ const RemitSuccessPage: React.FC = () => {
           {Number(amount).toLocaleString()}원
         </div>
         <div className="mb-6">송금이 완료되었습니다</div>
-        <Button type="button" onClick={() => navigate('/')}>
+        <Button type="button" onClick={() => navigate('/account')}>
           확인
         </Button>
       </div>

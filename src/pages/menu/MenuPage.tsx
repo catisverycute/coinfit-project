@@ -43,10 +43,14 @@ const MenuPage: React.FC = () => {
         </div>
       </div>
       <div className="space-y-3 mb-6">
-        <MenuItem label="계좌 관리" />
-        <MenuItem label="예산/목표 관리" />
+        <MenuItem label="계좌 관리" onClick={() => navigate('/account')} />
+        <MenuItem label="예산/목표 관리" onClick={() => navigate('/setting')} />
         <MenuItem label="소비 내역 전체" />
-        <MenuItem label="분석 리포트" />
+        <MenuItem
+          label="간편 비밀번호 변경"
+          onClick={() => navigate('/set-pin')}
+        />
+        <MenuItem label="분석 리포트" onClick={() => navigate('/analysis')} />
         <MenuItem label="카드 관리" />
       </div>
 

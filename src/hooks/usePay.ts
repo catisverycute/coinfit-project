@@ -1,5 +1,12 @@
 import { useEffect, useState } from 'react';
-import { setDoc, doc, serverTimestamp, onSnapshot } from 'firebase/firestore';
+import {
+  setDoc,
+  doc,
+  serverTimestamp,
+  onSnapshot,
+  updateDoc,
+  getDoc,
+} from 'firebase/firestore';
 import { auth, db } from '../firebase';
 
 export function usePay() {
@@ -13,7 +20,19 @@ export function usePay() {
       createdAt: serverTimestamp(),
     });
   };
-  return { addPay };
+
+  const chargePay = async (amount: number) => {
+    const user = auth.currentUser;
+    if (!user) throw new Error('로그인 필요');
+    const payRef = doc(db, `users/${user.uid}/accounts/moneyfitpay`);
+    const paySnap = await getDoc(payRef);
+    const before = paySnap.data()?.balance ?? 0;
+    await updateDoc(payRef, {
+      balance: Number(before) + Number(amount),
+    });
+  };
+
+  return { addPay, chargePay };
 }
 
 export function useMoneyFitPay() {

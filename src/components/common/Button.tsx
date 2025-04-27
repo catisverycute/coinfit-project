@@ -34,6 +34,7 @@ const variants = {
   keypad: 'bg-white px-2 py-10 text-4xl lg:py-5 lg:text-2xl ',
   primaryBtn: 'bg-[#87A9FF] px-4 py-2 rounded-lg  text-base',
   back: 'p-0 btn-ghost bg-transparent border-none  hover:shadow-none',
+  text: 'btn-ghost bg-transparent border-none  hover:shadow-none text-xl font-normal py-8',
 };
 
 const Button: React.FC<ButtonProps> = ({

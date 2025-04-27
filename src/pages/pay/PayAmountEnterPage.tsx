@@ -2,30 +2,18 @@ import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import AmountKeyPad from '../../components/transfer/AmountKeypad';
 import BackButton from '../../components/common/BackButton';
-import { useAccount } from '../../hooks/account/useAccount';
-import { useUserName } from '../../hooks/useUserName';
+import { useMoneyFitPay } from '../../hooks/usePay';
 
-const AmountEnterPage = () => {
+const PayAmountEnterPage = () => {
   const [amount, setAmount] = useState<string>('');
   const navigate = useNavigate();
   const location = useLocation();
   const ownerName = location.state?.ownerName || '';
-
-  const { accounts } = useAccount();
-  const myMainAccount = accounts.find((acc) => acc.isMain) || accounts[0];
-  const fromAccountId = myMainAccount?.id || '';
-  const fromAccountBank = myMainAccount?.bank || '';
-  const fromAccountNumber = myMainAccount?.accountNumber || '';
-
-  const fromAccountOwner = useUserName();
+  const { pay } = useMoneyFitPay();
 
   const handleClick = (value: string) => {
-    if (amount === '' && (value === '0' || value === '00')) {
-      return;
-    }
-    if (amount === '0' && (value === '0' || value === '00')) {
-      return;
-    }
+    if (amount === '' && (value === '0' || value === '00')) return;
+    if (amount === '0' && (value === '0' || value === '00')) return;
     setAmount((prev) => (prev === '0' ? value : prev + value));
   };
 
@@ -34,18 +22,21 @@ const AmountEnterPage = () => {
   };
 
   const handleSubmit = () => {
-    if (!fromAccountId) {
-      alert('출금 계좌가 없습니다.');
+    if (!pay) {
+      alert('페이 정보 없음');
       return;
     }
-    navigate('/account/transfer/step4', {
+    if (Number(amount) > pay.balance) {
+      alert('페이 잔액이 부족합니다.');
+      return;
+    }
+    navigate('/pay/transfer/confirm', {
       state: {
         ...location.state,
         amount,
-        fromAccount: fromAccountId,
-        fromAccountBank,
-        fromAccountNumber,
-        fromAccountOwner,
+        fromAccount: 'moneyfitpay',
+        fromAccountBank: 'MoneyFit Pay',
+        fromAccountNumber: '',
       },
     });
   };
@@ -61,6 +52,9 @@ const AmountEnterPage = () => {
         <div className="text-4xl">
           {amount.length === 0 ? '0' : Number(amount).toLocaleString()}원
         </div>
+        <div className="text-gray-500 mt-2">
+          페이 잔액: {pay?.balance?.toLocaleString() ?? 0}원
+        </div>
       </div>
       <AmountKeyPad
         onInput={handleClick}
@@ -71,4 +65,4 @@ const AmountEnterPage = () => {
   );
 };
 
-export default AmountEnterPage;
+export default PayAmountEnterPage;
