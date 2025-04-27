@@ -25,7 +25,7 @@ const PieChart: React.FC<CustomPieChartProps> = ({
   colors = defaultColors,
 }) => {
   return (
-    <div className="w-full h-[260px]">
+    <div className="w-full h-[320px]">
       <ResponsiveContainer>
         <RechartsPieChart>
           <Pie
