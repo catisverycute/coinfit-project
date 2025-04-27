@@ -10,13 +10,15 @@ const SelectAccountPage: React.FC = () => {
   const { transferAccounts, loading } = useTransferAccount();
 
   const handleSelect = (toAccount: string, toName: string, bank: string) => {
-    navigate('/transfer/step2', {
+    navigate('/account/transfer/step2', {
       state: { ...prevState, toAccount, toName, bank },
     });
   };
 
   const handleInputAccount = () => {
-    navigate('/transfer/step2', { state: { ...prevState, directInput: true } });
+    navigate('/account/transfer/step2', {
+      state: { ...prevState, directInput: true },
+    });
   };
 
   return (
