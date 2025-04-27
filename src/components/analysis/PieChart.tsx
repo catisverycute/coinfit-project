@@ -40,7 +40,7 @@ const PieChart: React.FC<CustomPieChartProps> = ({
               `${name} (${(percent * 100).toFixed(0)}%)`
             }
           >
-            {data.map((entry, index) => (
+            {data.map((_entry, index) => (
               <Cell
                 key={`cell-${index}`}
                 fill={colors[index % colors.length]}
