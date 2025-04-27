@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import AmountKeyPad from '../../components/transfer/AmountKeypad';
 import BackButton from '../../components/common/BackButton';
 import { useAccount } from '../../hooks/account/useAccount';
-import { useUserName } from '../../hooks/useUserName'; // 추가
+import { useUserName } from '../../hooks/useUserName';
 
 const AmountEnterPage = () => {
   const [amount, setAmount] = useState<string>('');
@@ -20,6 +20,12 @@ const AmountEnterPage = () => {
   const fromAccountOwner = useUserName();
 
   const handleClick = (value: string) => {
+    if (amount === '' && (value === '0' || value === '00')) {
+      return;
+    }
+    if (amount === '0' && (value === '0' || value === '00')) {
+      return;
+    }
     setAmount((prev) => (prev === '0' ? value : prev + value));
   };
 
@@ -32,7 +38,7 @@ const AmountEnterPage = () => {
       alert('출금 계좌가 없습니다.');
       return;
     }
-    navigate('/transfer/step4', {
+    navigate('/account/transfer/step4', {
       state: {
         ...location.state,
         amount,
@@ -52,7 +58,9 @@ const AmountEnterPage = () => {
           {ownerName ? `${ownerName}님에게` : '님에게'}
         </div>
         <div className="text-3xl py-2">얼마를 보낼까요?</div>
-        <div className="text-4xl">{amount.length === 0 ? '0' : amount}원</div>
+        <div className="text-4xl">
+          {amount.length === 0 ? '0' : Number(amount).toLocaleString()}원
+        </div>
       </div>
       <AmountKeyPad
         onInput={handleClick}
