@@ -29,9 +29,9 @@ const MainPage: React.FC = () => {
   return (
     <div>
       <MonthlyGraphCard />
-      <div className="mx-6">
-        <MoneyFitPay />
-      </div>
+        <div className="mx-6">
+          <MoneyFitPay />
+        </div>
       <MainAccountCard />
       {loading ? (
         <div>최근 소비 불러오는 중...</div>
