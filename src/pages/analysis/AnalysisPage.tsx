@@ -61,7 +61,7 @@ const AnalysisPage: React.FC = () => {
 
   return (
     <div className="p-5 max-w-md mx-auto">
-      <h2 className="text-xl font-bold mb-3">Expenses</h2>
+      <h2 className="text-xl font-bold mb-3">소비 내역</h2>
       <div className="flex gap-2 mb-2">
         <select value={month} onChange={(e) => setMonth(e.target.value)}>
           <option value="">전체</option>
