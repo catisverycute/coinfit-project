@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 const BottomNav: React.FC = () => {
   return (
-    <div className="fixed bottom-0 border-t w-full">
+    <div className="fixed bottom-0 border-t w-full bg-white">
       <div className="flex justify-between m-5">
         <Link to="/">
           <button className="w-16">
