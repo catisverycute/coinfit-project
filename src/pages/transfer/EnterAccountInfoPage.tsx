@@ -25,7 +25,7 @@ const EnterAccountInfoPage = () => {
   };
 
   if (owner) {
-    navigate('/transfer/step3', {
+    navigate('/account/transfer/step3', {
       state: {
         ...prevState,
         accountNumber,
